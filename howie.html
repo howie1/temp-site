@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>UQL</title>
-  <meta content="UQL: Howie Xu" property="og:title" />
+  <meta content="Howie Xu" property="og:title" />
   <meta content="Howie Xu's page" property="og:description" />
   <meta content="https://huddartcreek.com/howie" property="og:url" />
   <meta content="https://huddartcreek.com/resources/placeholder.png" property="og:image" />
@@ -277,10 +277,20 @@
     }
     
     img {
-      width: 30%;
+      width: 90%;
       height: auto;
       margin: 10px;
       border-radius: 8px;
+    }
+
+    .imgcarousel-container {
+      overflow-x: auto; /* Makes this container only scrollable horizontally */
+      white-space: nowrap; /* Keeps the images in line */
+    }
+
+    .imgcarousel {
+      display: inline-block; /* Displays images inline with spacing */
+      width: auto; /* Width auto so it doesn't stretch */
     }
 
     a {
@@ -482,7 +492,12 @@
     </script>
     <div class="slideone">
       <h2>Supercloud 6 (Coming Soon)</h2>
-      <img src="resources/nvidia.png" /><img src="resources/langchain.png" />
+      <div class="imgcarousel-container">
+        <div class="imgcarousel">
+          <img src="resources/nvidia.png" />
+          <img src="resources/langchain.png" />
+        </div>
+      </div>
       <h2>Supercloud 5 (Nov 2023)</h2>
       <a href="#video1" class="sparklebtnbg">
         <button onclick="playVideo('sxID5XV2x0I')" class="sparklebtn">Enterprise AI: Hype or Reality?
