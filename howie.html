@@ -15,14 +15,18 @@
       width: 100%;
       font-family: Inter, sans-serif;
     }
+
     body {
       background-color: #000;
       color: #fff;
       text-align: center;
+      /* overflow: hidden; */
     }
+
     .navbar {
       display: none;
     }
+
     .content {
       text-align: center;
       align-items: center;
@@ -30,15 +34,19 @@
       width: calc(100vw - 24px);
       top: 0;
     }
+
     .slide1 {
       height: 100vh;
     }
+
     h2 {
       font-size: calc(2vw + 24px);
     }
+
     p {
       font-size: calc(0.6vw + 12px);
     }
+
     canvas.dots {
       position: fixed;
       z-index: -1;
@@ -47,9 +55,11 @@
       width: 100%;
       height: 100%;
     }
+
     .sparklebtnbg {
       --color: #95f9fe;
     }
+
     .sparklebtn {
       position: relative;
       padding: 12px 35px;
@@ -64,109 +74,246 @@
       cursor: pointer;
       margin-bottom: 10px;
     }
-    .star-1, .star-2, .star-3, .star-4, .star-5, .star-6 {
+
+    .star-1 {
       position: absolute;
+      top: 20%;
+      left: 20%;
       width: 25px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+    }
+
+    .star-2 {
+      position: absolute;
+      top: 45%;
+      left: 45%;
+      width: 15px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+    }
+
+    .star-3 {
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      width: 5px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+    }
+
+    .star-4 {
+      position: absolute;
+      top: 20%;
+      left: 40%;
+      width: 8px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all .8s cubic-bezier(0, 0.4, 0, 1.01);
+    }
+
+    .star-5 {
+      position: absolute;
+      top: 25%;
+      left: 45%;
+      width: 15px;
       height: auto;
       filter: drop-shadow(0 0 0 #fffdef);
       z-index: -5;
       transition: all .6s cubic-bezier(0, 0.4, 0, 1.01);
     }
+
+    .star-6 {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      width: 5px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all .8s ease;
+    }
+
     .sparklebtn:hover {
       background: transparent;
       color: var(--color);
       box-shadow: 0 0 25px #e1fbff8c;
     }
+
+    .sparklebtn:hover .star-1 {
+      position: absolute;
+      top: -80%;
+      left: -30%;
+      width: 25px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .sparklebtn:hover .star-2 {
+      position: absolute;
+      top: -25%;
+      left: 10%;
+      width: 15px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .sparklebtn:hover .star-3 {
+      position: absolute;
+      top: 55%;
+      left: 25%;
+      width: 5px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .sparklebtn:hover .star-4 {
+      position: absolute;
+      top: 30%;
+      left: 80%;
+      width: 8px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .sparklebtn:hover .star-5 {
+      position: absolute;
+      top: 25%;
+      left: 115%;
+      width: 15px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .sparklebtn:hover .star-6 {
+      position: absolute;
+      top: 5%;
+      left: 60%;
+      width: 5px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .fil0 {
+      fill: #FFFDEF
+    }
+
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 100;
+      border: solid;
+      border-width: 2px;
+      border-color: white;
+      outline: none;
+      background-color: #222;
+      color: white; 
+      cursor: pointer;
+      padding: 15px; 
+      border-radius: 10px; 
+      font-size: 18px;
+    }
+
+    #myBtn:hover {
+      background-color: #555; /* Add a dark-grey background on hover */
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 140px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -75px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
     iframe {
       width: 100%;
       height: 100%;
     }
+    
     img {
       width: 50%;
       height: auto;
       margin: 10px;
       border-radius: 8px;
     }
+
     .imgcarousel-container {
-      overflow-x: auto;
-      white-space: nowrap;
+      overflow-x: auto; /* Makes this container only scrollable horizontally */
+      white-space: nowrap; /* Keeps the images in line */
     }
+
     .imgcarousel {
-      display: inline-block;
-      width: auto;
+      display: inline-block; /* Displays images inline with spacing */
+      width: auto; /* Width auto so it doesn't stretch */
     }
+
     a {
       transition: color 0.2s;
       text-decoration: none;
       color: #157aff;
     }
+
     a:visited { color:#157aff; }
     a:hover { color:#569fff; text-decoration: underline;}
     a:focus { color:#fff; text-decoration: underline; }
   </style>
-  <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1N7R0GNYR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-H1N7R0GNYR');
-  </script>
-</head>
-<body>
-  <div class="content" id="home">
-    <canvas class="dots"></canvas>
-    <div class="slideone">
-      <h2>Supercloud 6 (March 2024)</h2>
-      <div class="imgcarousel-container">
-        <div class="imgcarousel">
-          <img src="resources/nvidia.png" />
-          <img src="resources/langchain.png" />
-        </div>
-      </div>
-      <a href="#video4" class="sparklebtnbg">
-        <button onclick="playVideo('ujly-4dG-yM')" class="sparklebtn">Dr. Amr Awadallah & Dr. Yangqing Jia Insights</button>
-      </a>
-      <a href="#video5" class="sparklebtnbg">
-        <button onclick="playVideo('1qqBUhQObYY')" class="sparklebtn">Joshua Browder's Vision on Automation</button>
-      </a>
-      <a href="#video6" class="sparklebtnbg">
-        <button onclick="playVideo('guRX0ayOY6o')" class="sparklebtn">Harrison Chase on Data Analytics</button>
-      </a>
-      <a href="#video7" class="sparklebtnbg">
-        <button onclick="playVideo('5fZYuTdMDAo')" class="sparklebtn">Massi Genta & Eli Schleifer on Scaling AI</button>
-      </a>
-      <h2>Supercloud 5 (November 2023)</h2>
-      <a href="#video1" class="sparklebtnbg">
-        <button onclick="playVideo('sxID5XV2x0I')" class="sparklebtn">Enterprise AI: Hype or Reality?</button>
-      </a>
-      <a href="#video2" class="sparklebtnbg">
-        <button class="sparklebtn">Generative AI in Enterprise Builder's Insights</button>
-      </a>
-      <a href="#video3" class="sparklebtnbg">
-        <button class="sparklebtn">Charting the Generative AI Gold Rush</button>
-      </a>
-    </div>
-    <div class="slide1" id="video4">
-      <iframe class="youtube-video" src="https://www.youtube.com/embed/ujly-4dG-yM?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="slide1" id="video5">
-      <iframe class="youtube-video" src="https://www.youtube.com/embed/1qqBUhQObYY?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="slide1" id="video6">
-      <iframe class="youtube-video" src="https://www.youtube.com/embed/guRX0ayOY6o?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="slide1" id="video7">
-      <iframe class="youtube-video" src="https://www.youtube.com/embed/5fZYuTdMDAo?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-  <a href="#home" onclick="stopAllVideos()"><button id="myBtn" title="Back">Back</button></a>
   <script>
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function stopAllVideos() {
+      $('.youtube-video').each((i, videoElem) => {
+        videoElem.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+      });
+    };
 
     function playVideo(videoId) {
       stopAllVideos();
@@ -178,13 +325,7 @@
         }
       });
     }
-
-    function stopAllVideos() {
-      $('.youtube-video').each((i, videoElem) => {
-        videoElem.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-      });
-    };
-
+    
     function smoothScroll(target) {
       const element = document.getElementById(target);
       if (element) {
@@ -205,26 +346,342 @@
         });
       });
     });
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1N7R0GNYR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    window.onresize = onResize;
-
-    function onResize() {
+    gtag('config', 'G-H1N7R0GNYR');
+  </script>
+</head>
+<body>
+  <input type="text" style="display: none;" value="hello@huddartcreek.com" id="myInput">
+  <div class="content" id="home">
+    <canvas class="dots"></canvas>
+    <script>
+      var dotMargin = 25;
+      var numRows = 16;
+      var numCols = 16;
+      // Set the colors you want to support in this array
+      var colors = ["#FFFFFF", "#EEEEEE", "#FAFAFA", "#F0F0F0", "#F5F5F5", "#E9E9E9"];
+      var directions = ["+", "-"];
+      var speeds = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
+  
       var canvas = $("canvas.dots");
       var context = canvas[0].getContext("2d");
       var canvasWidth = canvas.width();
-      var canvasHeight = canvas.height();
+      var canvasHeight = canvas.height(); // this one is new
       canvas.attr({ height: canvasHeight, width: canvasWidth });
-      context.clearRect(0, 0, canvasWidth, canvasHeight);
-    }
+  
+      var dotWidth = 5;
+      var dotHeight = 5;
+  
+      var xMargin = canvasWidth / numCols;
+      var yMargin = canvasHeight / numRows;
+      var dotDiameter = 5;
+  
+      // if (dotWidth > dotHeight) {
+      //   var dotDiameter = dotHeight;
+      //   var xMargin =
+      //     (canvasWidth - (2 * dotMargin + numCols * dotDiameter)) / numCols;
+      //   var yMargin = dotMargin;
+      // } else {
+      //   var xMargin = dotMargin;
+      //   var yMargin =
+      //     (canvasHeight - (2 * dotMargin + numRows * dotDiameter)) / numRows;
+      // }
+  
+      // Start with an empty array of dots.
+      var dots = [];
+  
+      var dotRadius = dotDiameter * 0.25;
+  
+      for (var i = 0; i < numRows; i++) {
+        for (var j = 0; j < numCols; j++) {
+          var x = Math.floor(Math.random() * canvasWidth);
+          var y = Math.floor(Math.random() * canvasHeight);
+          // Get random color, direction and speed.
+          var color = colors[Math.floor(Math.random() * colors.length)];
+          var xMove = directions[Math.floor(Math.random() * directions.length)];
+          var yMove = directions[Math.floor(Math.random() * directions.length)];
+          var speed = speeds[Math.floor(Math.random() * speeds.length)];
+          // Set the object.
+          var dot = {
+            x: x,
+            y: y,
+            radius: dotRadius,
+            xMove: xMove,
+            yMove: yMove,
+            color: color,
+            speed: speed,
+          };
+          // Save it to the dots array.
+          dots.push(dot);
+          drawDot(dot);
+        }
+      }
+  
+      // Draw each dot in the dots array.
+      for (i = 0; i < dots.length; i++) {
+        drawDot(dots[i]);
+      }
+  
+      setTimeout(function () {
+        window.requestAnimationFrame(moveDot);
+      }, 100);
+  
+      function moveDot() {
+        context.clearRect(0, 0, canvasWidth, canvasHeight);
+  
+        for (i = 0; i < dots.length; i++) {
+          if (dots[i].xMove == "+") {
+            dots[i].x += dots[i].speed;
+          } else {
+            dots[i].x -= dots[i].speed;
+          }
+          if (dots[i].yMove == "+") {
+            dots[i].y += dots[i].speed;
+          } else {
+            dots[i].y -= dots[i].speed;
+          }
+  
+          drawDot(dots[i]);
+  
+          if (dots[i].x + dots[i].radius >= canvasWidth) {
+            dots[i].xMove = "-";
+          }
+          if (dots[i].x - dots[i].radius <= 0) {
+            dots[i].xMove = "+";
+          }
+          if (dots[i].y + dots[i].radius >= canvasHeight) {
+            dots[i].yMove = "-";
+          }
+          if (dots[i].y - dots[i].radius <= 0) {
+            dots[i].yMove = "+";
+          }
+        }
+  
+        window.requestAnimationFrame(moveDot);
+      }
+  
+      function drawDot(dot) {
+        // Set transparency on the dots.
+        context.globalAlpha = 0.9;
+        context.beginPath();
+        context.arc(dot.x, dot.y, dot.radius, 0, 2 * Math.PI, false);
+        context.fillStyle = dot.color;
+        context.fill();
+      }
+  
+      function onResize() {
+        canvasWidth = canvas.width();
+        canvasHeight = canvas.height();
+        canvas.attr({ height: canvasHeight, width: canvasWidth });
+        context.clearRect(0, 0, canvasWidth, canvasHeight);
+        for (i = 0; i < dots.length; i++) {
+          drawDot(dots[i]);
+        }
+      }
+  
+      window.onresize = onResize;
+    </script>
+    <div class="slideone">
+      <h2>Supercloud 6 (Coming Soon)</h2>
+      <div class="imgcarousel-container">
+        <div class="imgcarousel">
+          <img src="resources/nvidia.png" />
+          <img src="resources/langchain.png" />
+        </div>
+      </div>
+      <h2>Supercloud 6 (March 2024)</h2>
+      <div class="imgcarousel-container">
+        <div class="imgcarousel">
+          <img src="resources/nvidia.png" />
+          <img src="resources/langchain.png" />
+        </div>
+      </div>
+      <a href="#video4" class="sparklebtnbg">
+        <button onclick="playVideo('ujly-4dG-yM')" class="sparklebtn">Dr. Amr Awadallah & Dr. Yangqing Jia Insights</button>
+      </a>
+      <a href="#video5" class="sparklebtnbg">
+        <button onclick="playVideo('1qqBUhQObYY')" class="sparklebtn">Joshua Browder's Vision on Automation</button>
+      </a>
+      <a href="#video6" class="sparklebtnbg">
+        <button onclick="playVideo('guRX0ayOY6o')" class="sparklebtn">Harrison Chase on Data Analytics</button>
+      </a>
+      <a href="#video7" class="sparklebtnbg">
+        <button onclick="playVideo('5fZYuTdMDAo')" class="sparklebtn">Massi Genta & Eli Schleifer on Scaling AI</button>
+      </a>
+      <div class="slide1" id="video4">
+      <iframe class="youtube-video" src="https://www.youtube.com/embed/ujly-4dG-yM?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="slide1" id="video5">
+      <iframe class="youtube-video" src="https://www.youtube.com/embed/1qqBUhQObYY?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="slide1" id="video6">
+      <iframe class="youtube-video" src="https://www.youtube.com/embed/guRX0ayOY6o?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="slide1" id="video7">
+      <iframe class="youtube-video" src="https://www.youtube.com/embed/5fZYuTdMDAo?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+    </div>
+      <h2>Supercloud 5 (Nov 2023)</h2>
+      <a href="#video1" class="sparklebtnbg">
+        <button onclick="playVideo('sxID5XV2x0I')" class="sparklebtn">Enterprise AI: Hype or Reality?
+          <div class="star-1">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-2">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-3">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-4">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-5">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-6">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+        </button>
+      </a>
+      <a href="#video2" class="sparklebtnbg">
+        <button class="sparklebtn">Generative AI in Enterprise Builder's Insights
+          <div class="star-1">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-2">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-3">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-4">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-5">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-6">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+        </button>
+      </a>
+      <a href="#video3" class="sparklebtnbg">
+        <button class="sparklebtn">Charting the Generative AI Gold Rush
+          <div class="star-1">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-2">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-3">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-4">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-5">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+          <div class="star-6">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
+          </div>
+        </button>
+      </a>
+      <h1></h1>
+    </div>
+  </div>
+  <div class="slide1" id="video1">
+    <iframe class="youtube-video" id="sxID5XV2x0I" src="https://www.youtube.com/embed/sxID5XV2x0I?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="slide1" id="video2">
+    <iframe class="youtube-video" id="sxID5XV2x0I" src="https://www.youtube.com/embed/cuxl5g4WEe4?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="slide1" id="video3">
+    <iframe class="youtube-video" id="sxID5XV2x0I" src="https://www.youtube.com/embed/tZBvef0-gpU?enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="slide1" id="more">
+    <h2 id="howie-xu-s-selected-coverages">Howie Xu’s selected coverages</h2>
+<p>Inside emerging AI topics, from new investment to open-source models | theCUBE with Howie Xu
+<a href="https://siliconangle.com/2024/02/20/emerging-ai-topics-google-openai-cube-conversations/">https://siliconangle.com/2024/02/20/emerging-ai-topics-google-openai-cube-conversations/</a></p>
+<p>AI Disruption with Howie Xu | CEO Wisdom Podcast 
+<a href="https://www.youtube.com/watch?v=hYYOoOYLTCM">https://www.youtube.com/watch?v=hYYOoOYLTCM</a></p>
+<p>2 million view tweet on the future with GPT-5
+<a href="https://x.com/H0wie_Xu/status/1745657992459272423">https://x.com/H0wie_Xu/status/1745657992459272423</a></p>
+<p>How And When To Embed Machine Learning In Your Product | Google CapitalG’s Blog
+<a href="https://medium.com/capitalg/growth-profiles-how-and-when-to-embed-machine-learning-in-your-product-ee4c5c6b56ec">https://medium.com/capitalg/growth-profiles-how-and-when-to-embed-machine-learning-in-your-product-ee4c5c6b56ec</a></p>
+<p>MORGO 2023 — AI with that? | Howie Xu’s keynote recap
+<a href="https://jenny-57367.medium.com/morgo-2023-ai-with-that-56645c687219">https://jenny-57367.medium.com/morgo-2023-ai-with-that-56645c687219</a></p>
+<p>Why 2023 Is the New 1993
+<a href="https://keyiwang.substack.com/p/why-2023-is-the-new-1993">https://keyiwang.substack.com/p/why-2023-is-the-new-1993</a></p>
+<p>Strategies for Effective Communication in a Workplace with (formerly) Founder/CEO of TrustPath
+<a href="https://peer-effect.com/effective-communication-in-a-workplace/">https://peer-effect.com/effective-communication-in-a-workplace/</a></p>
+<p>Experts from Microsoft, Google and Salesforce discuss AI’s future impact | Supercloud 4
+<a href="https://siliconangle.com/2023/10/24/experts-from-microsoft-google-and-salesforce-discuss-ais-future-impact-supercloud4/">https://siliconangle.com/2023/10/24/experts-from-microsoft-google-and-salesforce-discuss-ais-future-impact-supercloud4/</a></p>
+<p>AI’s rapid progress is driving new tools and business results: Google, Microsoft, Salesforce weigh in | Supercloud 4
+<a href="https://siliconangle.com/2023/10/25/ais-rapid-progress-driving-new-tools-business-results-google-microsoft-salesforce-weigh-in-supercloud4/">https://siliconangle.com/2023/10/25/ais-rapid-progress-driving-new-tools-business-results-google-microsoft-salesforce-weigh-in-supercloud4/</a></p>
+<p>The new digital frontier: Solving complex problems with AI superpowers | Supercloud 4
+<a href="https://siliconangle.com/2023/10/26/new-digital-frontier-solving-complex-problems-ai-superpowers-supercloud4/">https://siliconangle.com/2023/10/26/new-digital-frontier-solving-complex-problems-ai-superpowers-supercloud4/</a></p>
+<p>Charting the generative AI gold rush: investor insights | Supercloud 5
+<a href="https://siliconangle.com/2023/11/28/charting-generative-ai-gold-rush-investor-insights-supercloud-5-supercloud5/">https://siliconangle.com/2023/11/28/charting-generative-ai-gold-rush-investor-insights-supercloud-5-supercloud5/</a></p>
+<p>Challenges and opportunities in generative AI for enterprise applications | Supercloud 5
+<a href="https://siliconangle.com/2023/11/28/challenges-opportunities-generative-ai-enterprise-applications-supercloud5/">https://siliconangle.com/2023/11/28/challenges-opportunities-generative-ai-enterprise-applications-supercloud5/</a></p>
+<p>The future of cloud computing: How AI is transforming the landscape | Supercloud 3
+<a href="https://siliconangle.com/2023/07/20/future-cloud-computing-ai-transforming-landscape-supercloud3/">https://siliconangle.com/2023/07/20/future-cloud-computing-ai-transforming-landscape-supercloud3/</a></p>
+<p>AI Meets the Supercloud | Supercloud 2
+<a href="https://www.youtube.com/watch?v=rPIAnSsmwpk">https://www.youtube.com/watch?v=rPIAnSsmwpk</a></p>
+<p>Supercloud is the perfect storm for enhanced simplicity, says AI expert | Supercloud 1
+<a href="https://siliconangle.com/2022/08/16/supercloud-is-the-perfect-storm-for-enhanced-simplicity-says-ai-ml-expert-supercloud22/">https://siliconangle.com/2022/08/16/supercloud-is-the-perfect-storm-for-enhanced-simplicity-says-ai-ml-expert-supercloud22/</a></p>
+<p>How AI Can Deliver the Next Phase of Scalability
+<a href="https://www.darkreading.com/application-security/how-ai-can-deliver-the-next-phase-of-scalability">https://www.darkreading.com/application-security/how-ai-can-deliver-the-next-phase-of-scalability</a></p>
+<p>Growth curve for SaaS will continue to drive innovation and growth, says Zscaler executive
+<a href="https://siliconangle.com/2019/11/28/growth-curve-for-saas-will-continue-to-drive-innovation-and-growth-says-zscaler-executive-cubeconversations/">https://siliconangle.com/2019/11/28/growth-curve-for-saas-will-continue-to-drive-innovation-and-growth-says-zscaler-executive-cubeconversations/</a></p>
+<p>The power of prediction: Harnessing AI and ML for cybersecurity
+<a href="https://podcasts.apple.com/us/podcast/the-power-of-prediction-harnessing-ai-and/id1563161531?i=1000571391622">https://podcasts.apple.com/us/podcast/the-power-of-prediction-harnessing-ai-and/id1563161531?i=1000571391622</a></p>
+<p>ChatGPT-style AI for CXOs in action | Howie Xu and Raj Krishna, SVP of Zscaler
+<a href="https://www.zscaler.com/cxorevolutionaries/insights/chatgpt-style-ai-cxos-action">https://www.zscaler.com/cxorevolutionaries/insights/chatgpt-style-ai-cxos-action</a></p>
+<p>VC says agility and resilience key to business outcomes | #VMworld 2015 with Howie Xu of Greylock EIR
+<a href="https://siliconangle.com/2015/10/12/vc-says-agility-and-resilience-key-to-business-outcomes-vmworld/">https://siliconangle.com/2015/10/12/vc-says-agility-and-resilience-key-to-business-outcomes-vmworld/</a></p>
+<p>APEC 2023 The Future Starts in California AI Panel - Helen Fu Thomas with Distinguished Panelists
+<a href="https://www.youtube.com/watch?v=G9e_vWJ9msg">https://www.youtube.com/watch?v=G9e_vWJ9msg</a></p>
+<p>Howie Xu, Cisco | VMworld 2014
+<a href="https://www.youtube.com/watch?v=qq6dqi9T6Zg">https://www.youtube.com/watch?v=qq6dqi9T6Zg</a></p>
+<h2 id="howie-xu-s-collections-social-networks">Howie Xu's Collections</h2>
+<p>Zscaler’s AI and Machine Learning Blogs by Howie Xu
+<a href="https://www.zscaler.com/author/hxu">https://www.zscaler.com/author/hxu</a></p>
+<p>Howie Xu’s substack newsletter
+<a href="https://howiexu.substack.com/p/agi-has-arrived">https://howiexu.substack.com/p/agi-has-arrived</a></p>
+<p>Howie Xu’s LinkedIn Articles
+<a href="https://www.linkedin.com/in/howie/recent-activity/articles/">https://www.linkedin.com/in/howie/recent-activity/articles/</a></p>
+<p>Howie Xu’s tweets on X.com
+<a href="https://twitter.com/H0wie_Xu">https://twitter.com/H0wie_Xu</a></p>
+<br>
+<br>
+<br>
+  </div>
+  <a href="#home" onclick="stopAllVideos()"><button id="myBtn" title="Back">Back</button></a>
+  <script>
+    // Get the button:
+    let mybutton = document.getElementById("myBtn");
 
     // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
+        mybutton.style.display = "block";
       } else {
-        document.getElementById("myBtn").style.display = "none";
+        mybutton.style.display = "none";
       }
-    };
+    }
   </script>
 </body>
 </html>
